@@ -1,0 +1,7 @@
+if WEBRTC_CODEC_ISAC
+if WEBRTC_CODEC_ISACFX
+SUBDIRS = fix
+else
+SUBDIRS = main
+endif
+endif
