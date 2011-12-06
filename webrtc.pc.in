@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: webrtc
+Description: WebRTC library
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -lwebrtc_audio_coding -lwebrtc_audio_conference_mixer -lwebrtc_audio_device -lwebrtc_audio_processing -lwebrtc_codecs_cng -lwebrtc_codecs_g711 @WRT_LIB_AMR@ @WRT_LIB_AMRWB@ @WRT_LIB_CELT@ @WRT_LIB_G722@ @WRT_LIB_G7221@ @WRT_LIB_G7221C@ @WRT_LIB_G729@ @WRT_LIB_G7291@ @WRT_LIB_GSMFR@ @WRT_LIB_ILBC@ @WRT_LIB_ISAC@ @WRT_LIB_ISACFX@ @WRT_LIB_OPUS@ @WRT_LIB_PCM16B@ @WRT_LIB_SPEEX@ @WRT_LIB_I420@ @WRT_LIB_VP8@ -lwebrtc_jpeg -lwebrtc_libyuv -lwebrtc_media_file -lwebrtc_neteq -lwebrtc_resampler -lwebrtc_rtp_rtcp -lwebrtc_signal_processing -lwebrtc_system_wrappers -lwebrtc_udp_transport -lwebrtc_utility -lwebrtc_vad -lwebrtc_video_capture -lwebrtc_video_coding -lwebrtc_video_engine -lwebrtc_video_processing -lwebrtc_video_render -lwebrtc_voice_engine
+Cflags: -I${includedir}/webrtc
