@@ -37,7 +37,11 @@ TEST_F(SplTest, MacroTest) {
     EXPECT_EQ(3, WEBRTC_SPL_ABS_W32(a));
     EXPECT_EQ(0, WEBRTC_SPL_GET_BYTE(&B, nr));
     WEBRTC_SPL_SET_BYTE(&d_ptr2, 1, nr);
+#ifdef WEBRTC_ARCH_LITTLE_ENDIAN
     EXPECT_EQ(65536, d_ptr2);
+#else
+    EXPECT_EQ(256, d_ptr2);
+#endif
 
     EXPECT_EQ(-63, WEBRTC_SPL_MUL(a, B));
     EXPECT_EQ(-2147483645, WEBRTC_SPL_MUL(a, b));
