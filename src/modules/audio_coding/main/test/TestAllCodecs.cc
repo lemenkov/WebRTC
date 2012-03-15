@@ -127,8 +127,8 @@ TestAllCodecs::~TestAllCodecs() {
 }
 
 void TestAllCodecs::Perform() {
-  char file[] = "./data/audio_coding/testfile32kHz.pcm";
-  infile_a_.Open(file, 32000, "rb");
+  std::string fileName = webrtc::test::ProjectRootPath() + "data/audio_coding/testfile32kHz.pcm";
+  infile_a_.Open(fileName.c_str(), 32000, "rb");
 
   if (test_mode_ == 0) {
     WEBRTC_TRACE(kTraceStateInfo, kTraceAudioCoding, -1,

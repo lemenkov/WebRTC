@@ -142,8 +142,8 @@ TestStereo::~TestStereo() {
 }
 
 void TestStereo::Perform() {
-  char file_name_stereo[500];
-  char file_name_mono[500];
+  std::string file_name_stereo = webrtc::test::ProjectRootPath() + "test/data/audio_coding/teststereo32kHz.pcm";
+  std::string file_name_mono = webrtc::test::ProjectRootPath() + "data/audio_coding/testfile32kHz.pcm";
   WebRtc_UWord16 frequency_hz;
   int audio_channels;
   int codec_channels;
@@ -156,15 +156,12 @@ void TestStereo::Perform() {
   }
 
   // Open both mono and stereo test files in 32 kHz.
-  strcpy(file_name_stereo, "./data/audio_coding/teststereo32kHz.pcm");
-  strcpy(file_name_mono, "./data/audio_coding/testfile32kHz.pcm");
-
   frequency_hz = 32000;
   in_file_stereo_ = new PCMFile();
   in_file_mono_ = new PCMFile();
-  in_file_stereo_->Open(file_name_stereo, frequency_hz, "rb");
+  in_file_stereo_->Open(file_name_stereo.c_str(), frequency_hz, "rb");
   in_file_stereo_->ReadStereo(true);
-  in_file_mono_->Open(file_name_mono, frequency_hz, "rb");
+  in_file_mono_->Open(file_name_mono.c_str(), frequency_hz, "rb");
   in_file_mono_->ReadStereo(false);
 
   // Create and initialize two ACMs, one for each side of a one-to-one call.

@@ -61,19 +61,18 @@ void Sender::Setup(AudioCodingModule *acm, RTPStream *rtpStream) {
   int noOfCodecs = acm->NumberOfCodecs();
   int codecNo;
 
+  std::string fileName = webrtc::test::ProjectRootPath() + "data/audio_coding/testfile32kHz.pcm";
   if (testMode == 1) {
     // Set the codec, input file, and parameters for the current test.
     codecNo = codeId;
     // Use same input file for now.
-    char fileName[] = "./data/audio_coding/testfile32kHz.pcm";
-    _pcmFile.Open(fileName, 32000, "rb");
+    _pcmFile.Open(fileName.c_str(), 32000, "rb");
   } else if (testMode == 0) {
     // Set the codec, input file, and parameters for the current test.
     codecNo = codeId;
     acm->Codec(codecNo, sendCodec);
     // Use same input file for now.
-    char fileName[] = "./data/audio_coding/testfile32kHz.pcm";
-    _pcmFile.Open(fileName, 32000, "rb");
+    _pcmFile.Open(fileName.c_str(), 32000, "rb");
   } else {
     printf("List of supported codec.\n");
     for (int n = 0; n < noOfCodecs; n++) {
@@ -82,8 +81,7 @@ void Sender::Setup(AudioCodingModule *acm, RTPStream *rtpStream) {
     }
     printf("Choose your codec:");
     ASSERT_GT(scanf("%d", &codecNo), 0);
-    char fileName[] = "./data/audio_coding/testfile32kHz.pcm";
-    _pcmFile.Open(fileName, 32000, "rb");
+    _pcmFile.Open(fileName.c_str(), 32000, "rb");
   }
 
   acm->Codec(codecNo, sendCodec);

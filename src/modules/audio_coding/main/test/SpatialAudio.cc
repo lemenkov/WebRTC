@@ -53,43 +53,40 @@ SpatialAudio::Setup()
     // Register the receiver ACM in channel
     _channel->RegisterReceiverACM(_acmReceiver);
 
-    char audioFileName[MAX_FILE_NAME_LENGTH_BYTE];
+    char tempFileName[MAX_FILE_NAME_LENGTH_BYTE];
+    std::string audioFileName;
     WebRtc_UWord16 sampFreqHz = 32000;
 
-    strncpy(audioFileName, "./data/audio_coding/testfile32kHz.pcm",
-            MAX_FILE_NAME_LENGTH_BYTE - 1);
+    audioFileName = webrtc::test::ProjectRootPath() + "data/audio_coding/testfile32kHz.pcm";
     if(_testMode == 1)
     {
-        printf("Enter the input file [%s]: ", audioFileName);
-        PCMFile::ChooseFile(audioFileName, MAX_FILE_NAME_LENGTH_BYTE, &sampFreqHz);
+        strncpy(tempFileName, audioFileName.c_str(),
+			MAX_FILE_NAME_LENGTH_BYTE - 1);
+        printf("Enter the input file [%s]: ", tempFileName);
+        PCMFile::ChooseFile(tempFileName, MAX_FILE_NAME_LENGTH_BYTE, &sampFreqHz);
+        audioFileName = tempFileName;
     }
-    _inFile.Open(audioFileName, sampFreqHz, "rb", false);
+    _inFile.Open(audioFileName.c_str(), sampFreqHz, "rb", false);
 
     if(_testMode == 0)
     {
-        std::string outputFile = webrtc::test::OutputPath() +
-            "out_spatial_autotest.pcm";
-        strncpy(audioFileName, outputFile.c_str(),
-                MAX_FILE_NAME_LENGTH_BYTE - 1);
+        audioFileName = webrtc::test::OutputPath() + "out_spatial_autotest.pcm";
     }
     else if(_testMode == 1)
     {
         printf("\n");
-        std::string outputFile = webrtc::test::OutputPath() +
-            "testspatial_out.pcm";
-        strncpy(audioFileName, outputFile.c_str(),
-                MAX_FILE_NAME_LENGTH_BYTE - 1);
-        printf("Enter the output file [%s]: ", audioFileName);
-        PCMFile::ChooseFile(audioFileName, MAX_FILE_NAME_LENGTH_BYTE, &sampFreqHz);
+        audioFileName = webrtc::test::OutputPath() + "testspatial_out.pcm";
+        strncpy(tempFileName, audioFileName.c_str(),
+			MAX_FILE_NAME_LENGTH_BYTE - 1);
+        printf("Enter the output file [%s]: ", tempFileName);
+        PCMFile::ChooseFile(tempFileName, MAX_FILE_NAME_LENGTH_BYTE, &sampFreqHz);
+        audioFileName = tempFileName;
     }
     else
     {
-        std::string outputFile = webrtc::test::OutputPath() +
-            "testspatial_out.pcm";
-        strncpy(audioFileName, outputFile.c_str(),
-                MAX_FILE_NAME_LENGTH_BYTE - 1);
+        audioFileName = webrtc::test::OutputPath() + "testspatial_out.pcm";
     }
-    _outFile.Open(audioFileName, sampFreqHz, "wb", false);
+    _outFile.Open(audioFileName.c_str(), sampFreqHz, "wb", false);
     _outFile.SaveStereo(true);
 
 
