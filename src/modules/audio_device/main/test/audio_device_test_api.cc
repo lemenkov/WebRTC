@@ -1082,7 +1082,7 @@ TEST_F(AudioDeviceAPITest, MicrophoneVolumeIsAvailable) {
 // MicrophoneVolume
 // MaxMicrophoneVolume
 // MinMicrophoneVolume
-TEST_F(AudioDeviceAPITest, MicrophoneVolumeTests) {
+TEST_F(AudioDeviceAPITest, DISABLED_MicrophoneVolumeTests) {
   WebRtc_UWord32 vol(0);
   WebRtc_UWord32 volume(0);
   WebRtc_UWord32 maxVolume(0);
