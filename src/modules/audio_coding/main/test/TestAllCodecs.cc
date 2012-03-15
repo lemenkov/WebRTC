@@ -618,10 +618,10 @@ void TestAllCodecs::Perform() {
     /* Print out all codecs that were not tested in the run */
     printf("The following codecs was not included in the test:\n");
 #ifndef WEBRTC_CODEC_AMR
-    printf("   GSMAMR\n");
+    printf("   AMR\n");
 #endif
 #ifndef WEBRTC_CODEC_AMRWB
-    printf("   GSMAMR-wb\n");
+    printf("   MAMR-wb\n");
 #endif
 #ifndef WEBRTC_CODEC_G722
     printf("   G.722\n");
