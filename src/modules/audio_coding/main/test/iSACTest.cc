@@ -184,8 +184,7 @@ ISACTest::Setup()
     CHECK_ERROR(_acmB->RegisterTransportCallback(_channel_B2A));
     _channel_B2A->RegisterReceiverACM(_acmA);
 
-    strncpy(_fileNameSWB, "./data/audio_coding/testfile32kHz.pcm",
-            MAX_FILE_NAME_LENGTH_BYTE);
+    _fileNameSWB = webrtc::test::ProjectRootPath() + "data/audio_coding/testfile32kHz.pcm";
 
     _acmB->RegisterSendCodec(_paramISAC16kHz);
     _acmA->RegisterSendCodec(_paramISAC32kHz);
@@ -199,7 +198,7 @@ ISACTest::Setup()
         printf("%s %d\n", _paramISAC16kHz.plname, _paramISAC16kHz.plfreq);
     }
 
-    _inFileA.Open(_fileNameSWB, 32000, "rb");
+    _inFileA.Open(_fileNameSWB.c_str(), 32000, "rb");
     std::string fileNameA = webrtc::test::OutputPath() + "testisac_a.pcm";
     std::string fileNameB = webrtc::test::OutputPath() + "testisac_b.pcm";
     _outFileA.Open(fileNameA.c_str(), 32000, "wb");
@@ -381,7 +380,7 @@ ISACTest::EncodeDecode(
     char fileNameOut[MAX_FILE_NAME_LENGTH_BYTE];
 
     // Files in Side A 
-    _inFileA.Open(_fileNameSWB, 32000, "rb", true);
+    _inFileA.Open(_fileNameSWB.c_str(), 32000, "rb", true);
     if(_testMode == 0)
     {
         sprintf(fileNameOut,
@@ -401,7 +400,7 @@ ISACTest::EncodeDecode(
     _outFileA.Open(fileNameOut, 32000, "wb");
 
     // Files in Side B
-    _inFileB.Open(_fileNameSWB, 32000, "rb", true);
+    _inFileB.Open(_fileNameSWB.c_str(), 32000, "rb", true);
     if(_testMode == 0)
     {
         sprintf(fileNameOut,
@@ -494,7 +493,7 @@ ISACTest::SwitchingSamplingRate(
     char fileNameOut[MAX_FILE_NAME_LENGTH_BYTE];
         
     // Files in Side A 
-    _inFileA.Open(_fileNameSWB, 32000, "rb");
+    _inFileA.Open(_fileNameSWB.c_str(), 32000, "rb");
     if(_testMode == 0)
     {
         sprintf(fileNameOut,
@@ -516,7 +515,7 @@ ISACTest::SwitchingSamplingRate(
     _outFileA.Open(fileNameOut, 32000, "wb", true);
     
     // Files in Side B
-    _inFileB.Open(_fileNameSWB, 32000, "rb");
+    _inFileB.Open(_fileNameSWB.c_str(), 32000, "rb");
     if(_testMode == 0)
     {
         sprintf(fileNameOut,
@@ -557,14 +556,14 @@ ISACTest::SwitchingSamplingRate(
             {
                 if(_testMode != 0) printf("\nSide A switched to Send Super-Wideband\n");
                 _inFileA.Close();
-                _inFileA.Open(_fileNameSWB, 32000, "rb");
+                _inFileA.Open(_fileNameSWB.c_str(), 32000, "rb");
                 CHECK_ERROR(_acmA->RegisterSendCodec(_paramISAC32kHz));
             }
             else
             {
                 if(_testMode != 0) printf("\nSide A switched to Send Wideband\n");
                 _inFileA.Close();
-                _inFileA.Open(_fileNameSWB, 32000, "rb");
+                _inFileA.Open(_fileNameSWB.c_str(), 32000, "rb");
                 CHECK_ERROR(_acmA->RegisterSendCodec(_paramISAC16kHz));
             }
             numSendCodecChanged++;
@@ -576,14 +575,14 @@ ISACTest::SwitchingSamplingRate(
             {
                 if(_testMode != 0) printf("\nSide B switched to Send Super-Wideband\n");
                 _inFileB.Close();
-                _inFileB.Open(_fileNameSWB, 32000, "rb");
+                _inFileB.Open(_fileNameSWB.c_str(), 32000, "rb");
                 CHECK_ERROR(_acmB->RegisterSendCodec(_paramISAC32kHz));
             }
             else
             {
                 if(_testMode != 0) printf("\nSide B switched to Send Wideband\n");
                 _inFileB.Close();
-                _inFileB.Open(_fileNameSWB, 32000, "rb");
+                _inFileB.Open(_fileNameSWB.c_str(), 32000, "rb");
                 CHECK_ERROR(_acmB->RegisterSendCodec(_paramISAC16kHz));
             }
             numSendCodecChanged++;
