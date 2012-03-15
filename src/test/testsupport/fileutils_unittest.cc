@@ -102,7 +102,7 @@ std::string FileUtilsTest::empty_dummy_dir_ = "";
 // The test is not fully testing the implementation, since we cannot be sure
 // of where the executable was launched from.
 // The test will fail if the top level directory is not named "trunk".
-TEST_F(FileUtilsTest, ProjectRootPathFromUnchangedWorkingDir) {
+TEST_F(FileUtilsTest, DISABLED_ProjectRootPathFromUnchangedWorkingDir) {
   std::string path = webrtc::test::ProjectRootPath();
   std::string expected_end = "trunk";
   expected_end = kPathDelimiter + expected_end + kPathDelimiter;
