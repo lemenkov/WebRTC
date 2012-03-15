@@ -212,8 +212,6 @@ TestStereo::~TestStereo()
 
 void TestStereo::Perform()
 {
-     char file_name_stereo[500];
-     char file_name_mono[500];
      WebRtc_UWord16 frequencyHz;
      int audio_channels;
      int codec_channels;
@@ -226,13 +224,13 @@ void TestStereo::Perform()
                        "---------- TestStereo ----------");
       }
 
-     strcpy(file_name_stereo, "./test/data/audio_coding/teststereo32kHz.pcm");
-     strcpy(file_name_mono, "./test/data/audio_coding/testfile32kHz.pcm");
+     std::string file_name_stereo = webrtc::test::ProjectRootPath() + "test/data/audio_coding/teststereo32kHz.pcm";
+     std::string file_name_mono = webrtc::test::ProjectRootPath() + "test/data/audio_coding/testfile32kHz.pcm";
      frequencyHz = 32000;
 
-    _in_file_stereo.Open(file_name_stereo, frequencyHz, "rb");
+    _in_file_stereo.Open(file_name_stereo.c_str(), frequencyHz, "rb");
     _in_file_stereo.ReadStereo(true);
-    _in_file_mono.Open(file_name_mono, frequencyHz, "rb");
+    _in_file_mono.Open(file_name_mono.c_str(), frequencyHz, "rb");
     _in_file_mono.ReadStereo(false);
 
     _acmA = AudioCodingModule::Create(0);

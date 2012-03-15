@@ -257,6 +257,7 @@ APITest::SetUp()
     _thereIsEncoderB = true;
 
     char fileName[500];
+    std::string refFileName = webrtc::test::ProjectRootPath() + "test/data/audio_coding/testfile32kHz.pcm";
     WebRtc_UWord16 frequencyHz;
     
     printf("\n\nAPI Test\n");
@@ -264,7 +265,7 @@ APITest::SetUp()
     printf("Hit enter to accept the default values indicated in []\n\n");
 
     //--- Input A
-    strcpy(fileName, "./test/data/audio_coding/testfile32kHz.pcm");
+    strcpy(fileName, refFileName.c_str());
     frequencyHz = 32000;
     printf("Enter input file at side A [%s]: ", fileName);
     PCMFile::ChooseFile(fileName, 499, &frequencyHz);
@@ -278,7 +279,7 @@ APITest::SetUp()
     _outFileA.Open(fileName, frequencyHz, "wb");
 
     //--- Input B
-    strcpy(fileName, "./test/data/audio_coding/testfile32kHz.pcm");
+    strcpy(fileName, refFileName.c_str());
     printf("\n\nEnter input file at side B [%s]: ", fileName);
     PCMFile::ChooseFile(fileName, 499, &frequencyHz);
     _inFileB.Open(fileName, frequencyHz, "rb", true);
