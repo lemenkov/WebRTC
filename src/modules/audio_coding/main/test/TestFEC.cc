@@ -59,8 +59,8 @@ void TestFEC::Perform()
         WEBRTC_TRACE(kTraceStateInfo, kTraceAudioCoding, -1,
                      "---------- TestFEC ----------");
     }
-    char fileName[] = "./test/data/audio_coding/testfile32kHz.pcm";
-    _inFileA.Open(fileName, 32000, "rb");
+    std::string fileName = webrtc::test::ProjectRootPath() + "test/data/audio_coding/testfile32kHz.pcm";
+    _inFileA.Open(fileName.c_str(), 32000, "rb");
 
 
     bool fecEnabled;
