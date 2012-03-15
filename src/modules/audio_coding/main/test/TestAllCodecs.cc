@@ -171,7 +171,7 @@ void TestAllCodecs::Perform()
     _channelA2B->RegisterReceiverACM(_acmB);
 
     // All codecs are tested for all allowed sampling frequencies, rates and packet sizes
-#ifdef WEBRTC_CODEC_GSMAMR
+#ifdef WEBRTC_CODEC_AMR
     if(_testMode != 0) {
         printf("=======================================================================\n");
     } else {
@@ -230,7 +230,7 @@ void TestAllCodecs::Perform()
     Run(_channelA2B);
     _outFileB.Close();
 #endif
-#ifdef WEBRTC_CODEC_GSMAMRWB
+#ifdef WEBRTC_CODEC_AMRWB
     if(_testMode != 0) {
         printf("=======================================================================\n");
     } else {
@@ -675,11 +675,11 @@ void TestAllCodecs::Perform()
     /* Print out all codecs that were not tested in the run */
     if(_testMode != 0) {
         printf("The following codecs was not included in the test:\n");
-#ifndef WEBRTC_CODEC_GSMAMR
-        printf("   GSMAMR\n");
+#ifndef WEBRTC_CODEC_AMR
+        printf("   AMR\n");
 #endif
-#ifndef WEBRTC_CODEC_GSMAMRWB
-        printf("   GSMAMR-wb\n");
+#ifndef WEBRTC_CODEC_AMRWB
+        printf("   AMR-wb\n");
 #endif
 #ifndef WEBRTC_CODEC_G722
         printf("   G.722\n");
