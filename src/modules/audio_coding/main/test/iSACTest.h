@@ -81,7 +81,6 @@ private:
     CodecInst _paramISAC16kHz;
     CodecInst _paramISAC32kHz;
 
-    char _fileNameWB[MAX_FILE_NAME_LENGTH_BYTE];
     std::string _fileNameSWB;
 
     ACMTestTimer _myTimer;
