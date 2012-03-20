@@ -13,7 +13,7 @@
 #include <assert.h>
 
 // LibYuv includes
-#include "third_party/libyuv/include/libyuv.h"
+#include <libyuv.h>
 
 namespace webrtc {
 
