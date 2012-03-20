@@ -8,7 +8,7 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-#include "../testing/gmock/include/gmock/gmock.h"
+#include "gmock/gmock.h"
 
 #include "modules/interface/module.h"
 #include "modules/rtp_rtcp/interface/rtp_rtcp.h"
