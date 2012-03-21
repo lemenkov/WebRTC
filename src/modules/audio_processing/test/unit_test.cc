@@ -23,7 +23,7 @@
 #ifdef WEBRTC_ANDROID_PLATFORM_BUILD
 #include "external/webrtc/src/modules/audio_processing/test/unittest.pb.h"
 #else
-#include "webrtc/audio_processing/unittest.pb.h"
+#include "unittest.pb.h"
 #endif
 
 #if (defined(WEBRTC_AUDIOPROC_FIXED_PROFILE)) || \

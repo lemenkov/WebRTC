@@ -18,7 +18,7 @@
 #include "google/gflags.h"
 #include "scoped_ptr.h"
 #include "typedefs.h"
-#include "webrtc/audio_processing/debug.pb.h"
+#include "debug.pb.h"
 
 using webrtc::scoped_array;
 
