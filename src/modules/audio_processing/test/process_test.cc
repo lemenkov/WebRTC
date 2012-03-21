@@ -24,7 +24,7 @@
 #ifdef WEBRTC_ANDROID_PLATFORM_BUILD
 #include "external/webrtc/src/modules/audio_processing/debug.pb.h"
 #else
-#include "webrtc/audio_processing/debug.pb.h"
+#include "debug.pb.h"
 #endif
 
 using webrtc::AudioFrame;
