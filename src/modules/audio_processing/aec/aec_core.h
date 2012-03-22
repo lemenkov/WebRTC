@@ -168,7 +168,9 @@ extern WebRtcAec_OverdriveAndSuppress_t WebRtcAec_OverdriveAndSuppress;
 int WebRtcAec_CreateAec(aec_t **aec);
 int WebRtcAec_FreeAec(aec_t *aec);
 int WebRtcAec_InitAec(aec_t *aec, int sampFreq);
+#if defined(WEBRTC_ARCH_X86_64)
 void WebRtcAec_InitAec_SSE2(void);
+#endif
 
 void WebRtcAec_InitMetrics(aec_t *aec);
 void WebRtcAec_BufferFarendPartition(aec_t *aec, const float* farend);
