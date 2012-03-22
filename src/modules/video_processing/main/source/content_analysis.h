@@ -60,7 +60,7 @@ private:
     ComputeSpatialMetricsFunc ComputeSpatialMetrics;
     WebRtc_Word32 ComputeSpatialMetrics_C();
 
-#if defined(WEBRTC_ARCH_X86_FAMILY)
+#if defined(WEBRTC_ARCH_X86_64)
     WebRtc_Word32 ComputeSpatialMetrics_SSE2();
     WebRtc_Word32 TemporalDiffMetric_SSE2();
 #endif

@@ -36,7 +36,7 @@ _cMetrics(NULL)
 
     if (runtime_cpu_detection)
     {
-#if defined(WEBRTC_ARCH_X86_FAMILY)
+#if defined(WEBRTC_ARCH_X86_64)
         if (WebRtc_GetCPUInfo(kSSE2))
         {
             ComputeSpatialMetrics =
