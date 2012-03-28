@@ -24,7 +24,11 @@
 #include "modules/video_coding/codecs/test/packet_manipulator.h"
 #include "modules/video_coding/codecs/test/stats.h"
 #include "modules/video_coding/codecs/test/videoprocessor.h"
+#ifdef VIDEOCODEC_VP8
 #include "modules/video_coding/codecs/vp8/main/interface/vp8.h"
+#elif VIDEOCODEC_I420
+#include "modules/video_coding/codecs/i420/main/interface/i420.h"
+#endif
 #include "modules/video_coding/main/interface/video_coding.h"
 #include "system_wrappers/interface/trace.h"
 #include "testsupport/frame_reader.h"
@@ -457,8 +461,13 @@ int main(int argc, char* argv[]) {
 
   PrintConfigurationSummary(config);
 
+#ifdef VIDEOCODEC_VP8
   webrtc::VP8Encoder* encoder = webrtc::VP8Encoder::Create();
   webrtc::VP8Decoder* decoder = webrtc::VP8Decoder::Create();
+#elif VIDEOCODEC_I420
+  webrtc::I420Encoder* encoder = new webrtc::I420Encoder;
+  webrtc::I420Decoder* decoder = new webrtc::I420Decoder;
+#endif
   webrtc::test::Stats stats;
   webrtc::test::FrameReaderImpl frame_reader(config.input_filename,
                                              config.frame_length_in_bytes);
