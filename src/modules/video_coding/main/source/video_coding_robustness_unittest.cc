@@ -39,7 +39,11 @@ class VCMRobustnessTest : public ::testing::Test {
     ASSERT_EQ(0, vcm_->InitializeReceiver());
     ASSERT_EQ(0, vcm_->RegisterFrameTypeCallback(&frame_type_callback_));
     ASSERT_EQ(0, vcm_->RegisterPacketRequestCallback(&request_callback_));
+#ifdef VIDEOCODEC_VP8
     ASSERT_EQ(VCM_OK, vcm_->Codec(kVideoCodecVP8, &video_codec_));
+#elif VIDEOCODEC_I420
+    ASSERT_EQ(VCM_OK, vcm_->Codec(kVideoCodecI420, &video_codec_));
+#endif
     ASSERT_EQ(VCM_OK, vcm_->RegisterReceiveCodec(&video_codec_, 1));
     ASSERT_EQ(VCM_OK, vcm_->RegisterExternalDecoder(&decoder_,
                                                     video_codec_.plType,

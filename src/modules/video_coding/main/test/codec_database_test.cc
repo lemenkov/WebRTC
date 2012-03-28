@@ -23,7 +23,9 @@
 #include "test_util.h"
 #include "testsupport/fileutils.h"
 #include "testsupport/metrics/video_metrics.h"
+#ifdef VIDEOCODEC_VP8
 #include "vp8.h" // for external codecs test
+#endif
 
 
 using namespace webrtc;
@@ -95,7 +97,7 @@ CodecDataBaseTest::Perform(CmdArgs& args)
 {
 #ifndef VIDEOCODEC_VP8
     assert(false);
-#endif
+#else
     Setup(args);
     EventWrapper* waitEvent = EventWrapper::Create();
 
@@ -382,6 +384,7 @@ CodecDataBaseTest::Perform(CmdArgs& args)
 
     delete waitEvent;
     Print();
+#endif
     return 0;
 }
 void
