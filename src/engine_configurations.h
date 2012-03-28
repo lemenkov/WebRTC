@@ -23,24 +23,6 @@
 // Optional to enable stand-alone
 // #define WEBRTC_EXTERNAL_TRANSPORT
 
-// ----------------------------------------------------------------------------
-//  [Voice] Codec settings
-// ----------------------------------------------------------------------------
-
-#ifdef WEBRTC_ANDROID
-#define WEBRTC_CODEC_ISACFX     // fix-point iSAC implementation
-#else
-#define WEBRTC_CODEC_ISAC       // floating-point iSAC implementation (default)
-#endif
-#define WEBRTC_CODEC_AVT
-
-#ifndef WEBRTC_CHROMIUM_BUILD
-#define WEBRTC_CODEC_ILBC
-#define WEBRTC_CODEC_G722
-#define WEBRTC_CODEC_PCM16
-#define WEBRTC_CODEC_RED
-#endif
-
 // ============================================================================
 //                                 VoiceEngine
 // ============================================================================
