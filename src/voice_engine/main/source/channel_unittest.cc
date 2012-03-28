@@ -8,7 +8,6 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-#include "channel.h"
 #include "gtest/gtest.h"
 
 // Empty test just to get coverage metrics.
