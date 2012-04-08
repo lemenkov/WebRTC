@@ -12,6 +12,8 @@
 #include <stdlib.h>
 
 #include "map_wrapper.h"
+using namespace webrtc;
+
 
 const int kNumberOfElements = 10;
 
