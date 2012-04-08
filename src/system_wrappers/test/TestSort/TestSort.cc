@@ -31,13 +31,13 @@ struct LotsOfData
 template<typename DataType>
 int Compare(const void* dataX, const void* dataY)
 {
-    DataType dataX = (DataType)*(const DataType*)dataX;
-    DataType dataY = (DataType)*(const DataType*)dataY;
-    if (dataX > dataY)
+    DataType dataXX = (DataType)*(const DataType*)dataX;
+    DataType dataYY = (DataType)*(const DataType*)dataY;
+    if (dataXX > dataYY)
     {
         return 1;
     }
-    else if (dataX < dataY)
+    else if (dataXX < dataYY)
     {
         return -1;
     }
