@@ -14,6 +14,7 @@
 
 #include "sort.h"
 #include "tick_util.h"
+using namespace webrtc;
 
 // Excellent work polluting the global namespace Visual Studio...
 #undef max

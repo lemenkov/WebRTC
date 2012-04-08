@@ -12,6 +12,7 @@
 #include <stdlib.h>
 
 #include "list_wrapper.h"
+using namespace webrtc;
 
 const int kNumberOfElements = 10;
 
