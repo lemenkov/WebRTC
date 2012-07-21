@@ -177,7 +177,7 @@ TEST_F(BitrateControllerTest, OneBitrateObserverTwoRtcpObservers) {
   delete second_bandwidth_observer;
 }
 
-TEST_F(BitrateControllerTest, TwoBitrateObserversOneRtcpObserver) {
+TEST_F(BitrateControllerTest, DISABLED_TwoBitrateObserversOneRtcpObserver) {
   TestBitrateObserver bitrate_observer_1;
   TestBitrateObserver bitrate_observer_2;
   controller_->SetBitrateObserver(&bitrate_observer_1, 200000, 100000, 300000);
