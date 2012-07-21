@@ -144,7 +144,7 @@ TestStereo::~TestStereo() {
 }
 
 void TestStereo::Perform() {
-  std::string file_name_stereo = webrtc::test::ProjectRootPath() + "test/data/audio_coding/teststereo32kHz.pcm";
+  std::string file_name_stereo = webrtc::test::ProjectRootPath() + "data/audio_coding/teststereo32kHz.pcm";
   std::string file_name_mono = webrtc::test::ProjectRootPath() + "data/audio_coding/testfile32kHz.pcm";
   WebRtc_UWord16 frequency_hz;
   int audio_channels;
